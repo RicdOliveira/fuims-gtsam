@@ -1,0 +1,14 @@
+<launch>i
+    <arg name = "image_topic_name" default = "/cam_3mp/dalsa1" />
+    <arg name = "nav_topic_name" default = "/nav_eva_dr/nav" />
+    <!-- Lançar o nó combinado -->
+    
+    <node name="sfm_node" pkg="sfm_node" type="sfm_node_node" output="screen">
+        <!-- Parâmetros e argumentos do nó, se necessário -->
+        <param name="use_sim_time" value="true"/>  <!-- Definindo para usar o tempo simulado, caso necessário -->
+        <param name = "image_topic_name" type="string" value = "$(arg image_topic_name)"/>
+        <param name = "nav_topic_name" type="string" value = "$(arg nav_topic_name)"/>
+        <rosparam file="$(find sfm_node)/config/eva_3mpx_intrinsic_08_23.yml"></rosparam>
+    </node>
+</launch>
+
